@@ -18,6 +18,7 @@ class PolyTreeNode
   end
 
   def remove_child(child)
+    child.parent=(nil)
   end
   
 end
