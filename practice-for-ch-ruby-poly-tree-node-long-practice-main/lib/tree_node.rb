@@ -8,11 +8,16 @@ class PolyTreeNode
   end
 
   def parent=(new_parent)
+        @parent.children.delete(self) if @parent != nil
         @parent = new_parent
-        #  if self.parent != new_parent
-        debugger
-        self.parent.children << self  if self.parent != nil
-        
+        self.parent.children << self  if self.parent != nil && !self.parent.children.include?(self)
+  end
+
+  def add_child(child)
+    child.parent=(self) 
+  end
+
+  def remove_child(child)
   end
   
 end
