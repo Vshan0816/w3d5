@@ -37,5 +37,9 @@ class KnightPathFinder
 
     end
 
+    def new_move_positons(pos)
+        KnightPathFinder.valid_moves(pos).select {|posi|!@considered_positions.include?(posi)}
+    end
+
 
 end
