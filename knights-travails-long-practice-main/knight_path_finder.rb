@@ -1,12 +1,15 @@
 require_relative "tree_node.rb"
 class KnightPathFinder
+    attr_reader :pos
     def initialize(pos)
         @root_node = PolyTreeNode.new(pos)
         self.build_move_tree
         @considered_positions = []
+        @pos = pos
     end
 
     def build_move_tree
+
     end
 
     def self.valid_moves(pos)
@@ -41,5 +44,18 @@ class KnightPathFinder
         KnightPathFinder.valid_moves(pos).select {|posi|!@considered_positions.include?(posi)}
     end
 
+    def bfs(target)
+        queue = []
+        queue << self
+        until queue.empty?
+            result = queue.shift
+              if result.pos == target
+                return result
+              else
+                queue += result.new_move_positions
+              end
+        end
+        nil
+    end
 
 end
