@@ -15,19 +15,19 @@ class KnightPathFinder
     def self.valid_moves(pos)
         val_moves = []
         row, col = pos
-        val_moves << [row+2, col+1] if valid_pos?([row+2, col+1])
-        val_moves << [row+2, col-1] if valid_pos?([row+2, col-1])
-        val_moves << [row-2, col+1] if valid_pos?([row-2, col+1])
-        val_moves << [row-2, col-1] if valid_pos?([row-2, col-1])
-        val_moves << [row+1, col+2] if valid_pos?([row+1, col+2])
-        val_moves << [row+1, col-2] if valid_pos?([row+1, col-2])
-        val_moves << [row-1, col+2] if valid_pos?([row-1, col+2])
-        val_moves << [row-1, col-2] if valid_pos?([row-1, col-2])
+        val_moves << [row+2, col+1] if KnightPathFinder.valid_pos?([row+2, col+1])
+        val_moves << [row+2, col-1] if KnightPathFinder.valid_pos?([row+2, col-1])
+        val_moves << [row-2, col+1] if KnightPathFinder.valid_pos?([row-2, col+1])
+        val_moves << [row-2, col-1] if KnightPathFinder.valid_pos?([row-2, col-1])
+        val_moves << [row+1, col+2] if KnightPathFinder.valid_pos?([row+1, col+2])
+        val_moves << [row+1, col-2] if KnightPathFinder.valid_pos?([row+1, col-2])
+        val_moves << [row-1, col+2] if KnightPathFinder.valid_pos?([row-1, col+2])
+        val_moves << [row-1, col-2] if KnightPathFinder.valid_pos?([row-1, col-2])
         val_moves
     end
 
 
-    def valid_pos?(pos)
+    def self.valid_pos?(pos)
         row, col = pos
         (row >= 0 && row < 8) && (col >= 0 && col < 8)
     end
@@ -40,7 +40,7 @@ class KnightPathFinder
 
     end
 
-    def new_move_positons(pos)
+    def new_move_positions(pos)
         KnightPathFinder.valid_moves(pos).select {|posi|!@considered_positions.include?(posi)}
     end
 
