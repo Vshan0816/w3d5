@@ -8,8 +8,19 @@ class KnightPathFinder
         @pos = pos
     end
 
+    #instantiate the result (create node)
+    #shovel possible positions into the queue (new move positions(pos))
+    #considered_positions shovel in result
+    #maybe we have to assign instance as a child of the previous instance
     def build_move_tree
-
+        queue = []
+        queue << self
+        until queue.empty?
+            result = queue.shift
+            @considered_positions << result.pos
+            KnightPathFinder.new(result.pos)
+            new_move_positions(result.pos)
+        end
     end
 
     def self.valid_moves(pos)
