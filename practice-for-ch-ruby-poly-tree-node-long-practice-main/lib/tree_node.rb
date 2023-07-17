@@ -23,16 +23,16 @@ class PolyTreeNode
   end
 
   def dfs(target)
-      return self if self == target
+      
+      return self if self.value == target
       self.children.each do |child|
 
-        result = dfs(target)
+        result = child.dfs(target)
         if result != nil
-          return result 
-        else
-          return nil
+          return result
         end
       end
+      return nil 
   end
   
 end
